@@ -1,0 +1,122 @@
+<div class="container">
+  <h2>{{ title }}</h2>
+
+  <ul>
+    @for (item of tasks(); track $index) {
+    <li>{{ item }}</li>
+    }
+  </ul>
+
+  <hr />
+
+  <h2>{{ "Hola".repeat(4) }}</h2>
+  <p>La suma es 3 + 3 es {{ 3 + 3 }}</p>
+  <p>Hola soy {{ name() }} y mi edad es {{ age }}</p>
+
+  <hr />
+
+  <img [src]="img" alt="" />
+  <input type="text" [value]="name()" />
+
+  <button [disabled]="desabled">Click me</button>
+
+  <p>person: {{ person().name }}</p>
+  <img [src]="person().avatar" alt="" />
+  <input type="text" [value]="person().age" />
+
+  <hr />
+
+  <button (click)="clickHandler()">Click me</button>
+  <button (dblclick)="clickHandler()">Doble Click me</button>
+
+  <p>(change)</p>
+  <input type="number" [value]="age" (change)="changeHandler($event)" />
+
+  <p>(keydown)</p>
+  <input type="text" [value]="age" (keydown)="keydownHanler($event)" />
+
+  <p>(keydown shif t)</p>
+  <input type="text" [value]="age" (keydown)="keydownHanler($event)" />
+
+  <hr />
+
+  <ul>
+    <p>Total: {{ tasks().length }}</p>
+    @for (item of tasks(); track $index) {
+    <li>{{ $index }} {{ item }}</li>
+    }
+  </ul>
+
+  <hr />
+
+  <h1>Signal</h1>
+
+  <p>(Signal)</p>
+  <input type="text" [value]="name()" (change)="changeHandler($event)" />
+
+  <P>NAME: {{ name() }}</P>
+
+  <hr />
+
+  @if (1 !== 1) {
+  <div>my Contend</div>
+
+  } @if (name() === "John") {
+  <div>my Contend</div>
+  } @if (person.name !== 'John Erikc' && person().age>30) {
+  <div>conficional doble</div>
+  } @if (name() === "John Erikc") {
+  <div>conficional</div>
+  }
+
+  <hr />
+
+  <p>Switch</p>
+  <input type="text" [value]="person().name" (change)="changeName($event)" />
+
+  @switch (person().name) { @case ('John') { yo soy john } @case ("Jennifer") {
+  yo soy Jennifer } @case ("Fabian") { yo soy Fabian } @case ("Hailer") { yo soy
+  Hailer } @case ("Camila") { yo soy Camila } @default { El nombre no se
+  encuentra. } }
+
+  <hr />
+
+  <input type="color" [formControl]="colorCtrl" />
+  <p>color: {{ colorCtrl.value }}</p>
+
+  <hr />
+  <p>SVG</p>
+
+  <svg>
+    <g>
+      <rect
+        x="0"
+        y="0"
+        height="100"
+        width="100"
+        [attr.fill]="colorCtrl.value"
+      />
+    </g>
+  </svg>
+
+  <hr />
+
+  <input type="number" [formControl]="widtgCtrl" />
+  <span class="box" [style.width.px]="widtgCtrl.value"></span>
+
+  <hr />
+
+  <p>
+    <input type="text" [formControl]="nameCtrl" /> <br />
+
+    <span
+      class="message-error"
+      [class.show]="nameCtrl.invalid && nameCtrl.touched"
+      >Nombre invalido</span
+    >
+  </p>
+
+  <p>
+    <input type="text" />
+  </p>
+</div>
